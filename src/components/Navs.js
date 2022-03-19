@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const LINKS = [
     { to: '/', text: 'Home' },
     { to: '/starred', text: 'Starred' },
-    { to: '/About', text: 'About'},
 ];
 
 function Navs() {
