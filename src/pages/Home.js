@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import MainPageLayout from '../components/MainPageLayout';
 import { apiGet } from '../misc/config';
+import ShowGrid from '../components/show/ShowGrid';
+import ActorGrid from '../components/actor/ActorGrid';
 
 function Home() {
   const [input, setInput] = useState('');
@@ -10,7 +12,7 @@ function Home() {
   const isShowsSearch = searchOption === 'shows';
 
   const onSearch = () => {
-    apiGet(`/search/shows?q=${input}`).then(result => {
+    apiGet(`/search/${searchOption}?q=${input}`).then(result => {
       setResults(result);
     });
   };
@@ -35,11 +37,11 @@ function Home() {
     }
 
     if (results && results.length > 0) {
-      return results[0].show
-        ? results.map(item => <div key={item.show.id}>{item.show.name}</div>)
-        : results.map(item => (
-          <div key={item.person.id}>{item.person.name}</div>
-        ));
+      return results[0].show ? (
+        <ShowGrid data={results} />
+      ) : (
+        <ActorGrid data={results} />
+      );
     }
 
     return null;
@@ -49,12 +51,11 @@ function Home() {
     <MainPageLayout>
       <input
         type="text"
-        placeholder="Search Something"
+        placeholder="Search for something"
         onChange={onInputChange}
         onKeyDown={onKeyDown}
         value={input}
       />
-
 
       <div>
         <label htmlFor="shows-search">
