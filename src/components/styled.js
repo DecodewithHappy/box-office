@@ -15,7 +15,7 @@ export const SearchCard = styled.div`
 
   .img-wrapper {
     width: 100%;
-    border-radius: 15px;
+    border-radius: 12px;
     height: 420px;
     overflow: hidden;
     border: 1px solid #ddd;
