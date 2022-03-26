@@ -15,13 +15,13 @@ export const SearchCard = styled.div`
 
   .img-wrapper {
     width: 100%;
-    border-radius: 40px;
+    border-radius: 15px;
     height: 420px;
     overflow: hidden;
     border: 1px solid #ddd;
 
     img {
-      object-fit: cover;
+      object-fit: contain;
       height: 100%;
       width: 100%;
     }
